@@ -21,9 +21,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	return *this;
 }
 
-Bureaucrat::~Bureaucrat() {
-	std::cout << _name << " destructor" << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 std::string Bureaucrat::getName() const {
 	return _name;
