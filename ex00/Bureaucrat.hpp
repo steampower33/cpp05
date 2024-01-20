@@ -2,7 +2,6 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include <ostream>
 
 class Bureaucrat {
 public:
