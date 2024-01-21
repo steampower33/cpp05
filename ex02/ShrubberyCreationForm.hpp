@@ -2,6 +2,7 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include "fstream"
 
 class ShrubberyCreationForm : public AForm {
 public:
@@ -10,6 +11,7 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 	~ShrubberyCreationForm();
+	void beSigned(const Bureaucrat& b);
 private:
 	std::string _target;
 };
