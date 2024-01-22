@@ -21,5 +21,9 @@ int main() {
 	RobotomyRequestForm->execute(b);
 	PresidentialPardonForm->beSigned(b);
 	PresidentialPardonForm->execute(b);
+
+	delete PresidentialPardonForm;
+	delete RobotomyRequestForm;
+	delete ShrubberyCreationForm;
 	return 0;
 }
