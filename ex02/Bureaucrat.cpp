@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name(""), _grade(1) {}
 
@@ -58,7 +58,7 @@ void Bureaucrat::decrementGrade() {
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat::signForm(const Form& f) {
+void Bureaucrat::signForm(const AForm& f) const {
 	if (f.getSign())
 	{
 		std::cout << _name << " signed " << f.getName() << std::endl;

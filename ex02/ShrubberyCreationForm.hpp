@@ -4,6 +4,8 @@
 #include "AForm.hpp"
 #include "fstream"
 
+class Bureaucrat;
+
 class ShrubberyCreationForm : public AForm {
 public:
 	ShrubberyCreationForm();
@@ -11,7 +13,7 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 	~ShrubberyCreationForm();
-	void beSigned(const Bureaucrat& b);
+	void execute(const Bureaucrat& executor) const;
 private:
 	std::string _target;
 };

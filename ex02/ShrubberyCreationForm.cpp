@@ -1,12 +1,13 @@
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : _target("") {}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("", 145, 137), _target("") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm("ShrubberyCreationForm", 145, 137), _target(other._target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other) {
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
 	if (this != &other)
 	{
 		_target = other._target;
@@ -16,19 +17,19 @@ ShrubberyCreationForm::ShrubberyCreationForm& operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void ShrubberyCreationForm::beSigned(const Bureaucrat& b) {
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	try
 	{
-		if (b.getGrade() <= _grade_sign)
+		if (this->getSign())
 		{
-			std::string newFilename =  _target + "_shrubbery";
-
+			executor.signForm(*this);
+			std::string newFilename = _target + "_shrubbery";
 			// 파일 열기
 			std::ofstream outputFile(newFilename);
 
 			if (outputFile.is_open()) {
 				// 아스키 트리 작성
-				outputFile << "	     *      \n";
+				outputFile << "      *      \n";
 				outputFile << "     ***     \n";
 				outputFile << "    *****    \n";
 				outputFile << "   *******   \n";
@@ -44,7 +45,7 @@ void ShrubberyCreationForm::beSigned(const Bureaucrat& b) {
 			}
 		}
 		else
-			throw 
+			throw AForm::IsNotSignedException();
 	}
 	catch(const std::exception& e)
 	{

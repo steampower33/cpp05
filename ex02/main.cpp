@@ -1,21 +1,37 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
 	Bureaucrat b("LEE", 10);
-	Form f1("42Seoul Subsidy Policy", 15, 15);
-	Form f2("Survive Policy", 5, 5);
-
-	f1.beSigned(b);
-	b.signForm(f1);
 	std::cout << b << std::endl;
-	std::cout << f1 << std::endl;
 
 	std::cout << std::endl;
 
-	f2.beSigned(b);
-	b.signForm(f2);
-	std::cout << b << std::endl;
-	std::cout << f2 << std::endl;
+	AForm* ShrubberyForm = new ShrubberyCreationForm("shrubbery");
+	std::cout << *ShrubberyForm << std::endl;
+	ShrubberyForm->execute(b);
+	ShrubberyForm->beSigned(b);
+	std::cout << *ShrubberyForm << std::endl;
+	ShrubberyForm->execute(b);
+
+	std::cout << std::endl;
+
+	AForm* Robotomy = new RobotomyRequestForm("robotomy");
+	std::cout << *Robotomy << std::endl;
+	Robotomy->execute(b);
+	Robotomy->beSigned(b);
+	std::cout << *Robotomy << std::endl;
+	Robotomy->execute(b);
+
+	std::cout << std::endl;
+
+	AForm* Presidential = new PresidentialPardonForm("Presidential");
+	std::cout << *Presidential << std::endl;
+	Presidential->execute(b);
+	Presidential->beSigned(b);
+	std::cout << *Presidential << std::endl;
+	Presidential->execute(b);
 	return 0;
 }
