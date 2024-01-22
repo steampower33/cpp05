@@ -4,17 +4,18 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-	Bureaucrat b("LEE", 10);
+	Bureaucrat b("LEE", 1);
 	std::cout << b << std::endl;
 
 	std::cout << std::endl;
 
+	// AForm* error = new ShrubberyCreationForm();
 	AForm* Shrubbery = new ShrubberyCreationForm("shrubbery");
-	std::cout << *ShrubberyForm << std::endl;
-	ShrubberyForm->execute(b);
-	ShrubberyForm->beSigned(b);
-	std::cout << *ShrubberyForm << std::endl;
-	ShrubberyForm->execute(b);
+	std::cout << *Shrubbery << std::endl;
+	Shrubbery->execute(b);
+	Shrubbery->beSigned(b);
+	std::cout << *Shrubbery << std::endl;
+	Shrubbery->execute(b);
 
 	std::cout << std::endl;
 
@@ -34,7 +35,9 @@ int main() {
 	std::cout << *Presidential << std::endl;
 	Presidential->execute(b);
 
-	delete ShrubberyForm;
+	std::cout << std::endl;
+
+	delete Shrubbery;
 	delete Robotomy;
 	delete Presidential;
 	return 0;
