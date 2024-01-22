@@ -4,41 +4,30 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-	Bureaucrat b("LEE", 1);
+	Bureaucrat b("LEE", 5);
 	std::cout << b << std::endl;
 
-	std::cout << std::endl;
-
-	// AForm* error = new ShrubberyCreationForm();
-	AForm* Shrubbery = new ShrubberyCreationForm("shrubbery");
-	std::cout << *Shrubbery << std::endl;
-	Shrubbery->execute(b);
-	Shrubbery->beSigned(b);
-	std::cout << *Shrubbery << std::endl;
-	Shrubbery->execute(b);
-
-	std::cout << std::endl;
-
-	AForm* Robotomy = new RobotomyRequestForm("robotomy");
-	std::cout << *Robotomy << std::endl;
-	Robotomy->execute(b);
-	Robotomy->beSigned(b);
-	std::cout << *Robotomy << std::endl;
-	Robotomy->execute(b);
-
-	std::cout << std::endl;
-
+	AForm* Shrubbery = new ShrubberyCreationForm("Shrubbery");
 	AForm* Presidential = new PresidentialPardonForm("Presidential");
-	std::cout << *Presidential << std::endl;
-	Presidential->execute(b);
-	Presidential->beSigned(b);
-	std::cout << *Presidential << std::endl;
-	Presidential->execute(b);
 
 	std::cout << std::endl;
 
+	b.signForm(*Shrubbery);
+	b.executeForm(*Shrubbery);
 	delete Shrubbery;
+
+	std::cout << std::endl;
+
+	AForm* Robotomy = new RobotomyRequestForm("Robotomy");
+	b.signForm(*Robotomy);
+	b.executeForm(*Robotomy);
 	delete Robotomy;
+
+	std::cout << std::endl;
+
+	b.signForm(*Presidential);
+	b.executeForm(*Presidential);
 	delete Presidential;
+
 	return 0;
 }

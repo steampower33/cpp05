@@ -2,12 +2,11 @@
 
 Bureaucrat::Bureaucrat() : _name(""), _grade(1) {}
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade) {
+Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
 	if (_grade < 1)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	else if (_grade > 150)
-		throw Bureaucrat::GradeTooLowException();
-	std::cout << "The constructor has been executed" << std::endl;
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {}
@@ -43,17 +42,17 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
 }
 
 void Bureaucrat::incrementGrade() {
+	if (_grade - 1 < 1)
+		throw GradeTooHighException();
+	else if (_grade - 1 > 150)
+		throw GradeTooLowException();
 	_grade--;
-	if (_grade < 1)
-		throw Bureaucrat::GradeTooHighException();
-	else if (_grade > 150)
-		throw Bureaucrat::GradeTooLowException();
 }
 
 void Bureaucrat::decrementGrade() {
+	if (_grade + 1 < 1)
+		throw GradeTooHighException();
+	else if (_grade + 1 > 150)
+		throw GradeTooLowException();
 	_grade++;
-	if (_grade < 1)
-		throw Bureaucrat::GradeTooHighException();
-	else if (_grade > 150)
-		throw Bureaucrat::GradeTooLowException();
 }

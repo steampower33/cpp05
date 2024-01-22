@@ -2,7 +2,7 @@ NAME = ex00
 SRCS = main.cpp Bureaucrat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-CC = g++
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp

@@ -7,10 +7,8 @@ class AForm;
 
 class Bureaucrat {
 public:
-	Bureaucrat();
-	Bureaucrat(const std::string name, int grade);
+	Bureaucrat(const std::string& name, int grade);
 	Bureaucrat(const Bureaucrat& other);
-	Bureaucrat& operator=(const Bureaucrat& other);
 	~Bureaucrat();
 	std::string getName() const;
 	int getGrade() const;
@@ -24,8 +22,11 @@ public:
 		public:
 			const char* what() const throw();
 	};
-	void signForm(const AForm& f) const;
+	void signForm(AForm& f);
+	void executeForm(const AForm& form);
 private:
+	Bureaucrat();
+	Bureaucrat& operator=(const Bureaucrat& other);
 	const std::string _name;
 	int _grade;
 };

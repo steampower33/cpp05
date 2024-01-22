@@ -3,7 +3,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("", 25, 5), _target("") {}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm("PresidentialPardonForm", 25 ,5), _target(other._target) {}
 
@@ -18,17 +18,6 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
-	try
-	{
-		if (!this->getSign())
-			throw AForm::IsNotSignedException();
-		if (!(executor.getGrade() <= this->getGradeExecute()))
-			throw AForm::GradeTooLowException();
-		executor.signForm(*this);
-		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	checkForm(executor);
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

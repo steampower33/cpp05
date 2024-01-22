@@ -3,7 +3,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("", 145, 137), _target("") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm("ShrubberyCreationForm", 145, 137), _target(other._target) {}
 
@@ -18,36 +18,21 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-	try
-	{
-		if (!this->getSign())
-			throw AForm::IsNotSignedException();
-		if (!(executor.getGrade() <= this->getGradeExecute()))
-			throw AForm::GradeTooLowException();
-		executor.signForm(*this);
-		std::string newFilename = _target + "_shrubbery";
-		// 파일 열기
-		std::ofstream outputFile(newFilename.c_str());
-
-		if (outputFile.is_open()) {
-			// 아스키 트리 작성
-			outputFile << "      *      \n";
-			outputFile << "     ***     \n";
-			outputFile << "    *****    \n";
-			outputFile << "   *******   \n";
-			outputFile << "  *********  \n";
-			outputFile << " *********** \n";
-			outputFile << "*************\n";
-			outputFile << "     |||     \n";
-			// 파일 닫기
-			outputFile.close();
-			std::cout << "The file was successfully created." << std::endl;
-		} else {
-			std::cerr << "파일을 열 수 없습니다." << std::endl;
-		}
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
+	checkForm(executor);
+	std::string newFilename = _target + "_shrubbery";
+	std::ofstream outputFile(newFilename.c_str());
+	if (outputFile.is_open()) {
+		outputFile << "      *      \n";
+		outputFile << "     ***     \n";
+		outputFile << "    *****    \n";
+		outputFile << "   *******   \n";
+		outputFile << "  *********  \n";
+		outputFile << " *********** \n";
+		outputFile << "*************\n";
+		outputFile << "     |||     \n";
+		outputFile.close();
+		std::cout << "The file was successfully created." << std::endl;
+	} else {
+		std::cout << "The file does not open" << std::endl;
 	}
 }

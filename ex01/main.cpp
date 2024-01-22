@@ -9,7 +9,6 @@ int main() {
 
 	Form f1("42Seoul Subsidy Policy", 15, 15);
 	std::cout << f1 << std::endl;
-	f1.beSigned(b);
 	b.signForm(f1);
 	std::cout << f1 << std::endl;
 
@@ -17,7 +16,6 @@ int main() {
 
 	Form f2("Survive Policy", 5, 5);
 	std::cout << f2 << std::endl;
-	f2.beSigned(b);
 	b.signForm(f2);
 	std::cout << f2 << std::endl;
 

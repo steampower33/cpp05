@@ -15,12 +15,22 @@ int main() {
 	RobotomyRequestForm = i.makeForm("Robotomy", "RobotomyRequest");
 	PresidentialPardonForm = i.makeForm("Presidential", "PresidentialPardon");
 
-	ShrubberyCreationForm->beSigned(b);
-	ShrubberyCreationForm->execute(b);
-	RobotomyRequestForm->beSigned(b);
-	RobotomyRequestForm->execute(b);
-	PresidentialPardonForm->beSigned(b);
-	PresidentialPardonForm->execute(b);
+	std::cout << std::endl;
+
+	b.signForm(*ShrubberyCreationForm);
+	b.executeForm(*ShrubberyCreationForm);
+
+	std::cout << std::endl;
+
+	b.signForm(*RobotomyRequestForm);
+	b.executeForm(*RobotomyRequestForm);
+
+	std::cout << std::endl;
+
+	b.signForm(*PresidentialPardonForm);
+	b.executeForm(*PresidentialPardonForm);
+
+	std::cout << std::endl;
 
 	delete PresidentialPardonForm;
 	delete RobotomyRequestForm;

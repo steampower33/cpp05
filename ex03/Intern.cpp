@@ -24,7 +24,7 @@ const char* Intern::DoesNotExistTarget::what() const throw() {
 
 AForm* Intern::makeForm(const std::string FormName, const std::string target) {
 	std::string _target[3] = {"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon"};
-
+	AForm* f;
 	int i;
 	for (i = 0; i < 3; i++)
 	{
@@ -35,16 +35,17 @@ AForm* Intern::makeForm(const std::string FormName, const std::string target) {
 	switch (i)
 	{
 		case 0:
-			std::cout << "Intern creates " << FormName << std::endl;
-			return new ShrubberyCreationForm(FormName);
+			f = new ShrubberyCreationForm(FormName);
+			break;
 		case 1:
-			std::cout << "Intern creates " << FormName << std::endl;
-			return new RobotomyRequestForm(FormName);
+			f = new RobotomyRequestForm(FormName);
+			break;
 		case 2:
-			std::cout << "Intern creates " << FormName << std::endl;
-			return new PresidentialPardonForm(FormName);
+			f = new PresidentialPardonForm(FormName);
+			break;
 		default:
 			throw Intern::DoesNotExistTarget();
 	}
-	return (NULL);
+	std::cout << "Intern creates " << FormName << std::endl;
+	return (f);
 }
