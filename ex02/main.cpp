@@ -9,7 +9,7 @@ int main() {
 
 	std::cout << std::endl;
 
-	AForm* ShrubberyForm = new ShrubberyCreationForm("shrubbery");
+	AForm* Shrubbery = new ShrubberyCreationForm("shrubbery");
 	std::cout << *ShrubberyForm << std::endl;
 	ShrubberyForm->execute(b);
 	ShrubberyForm->beSigned(b);
@@ -33,5 +33,9 @@ int main() {
 	Presidential->beSigned(b);
 	std::cout << *Presidential << std::endl;
 	Presidential->execute(b);
+
+	delete ShrubberyForm;
+	delete Robotomy;
+	delete Presidential;
 	return 0;
 }

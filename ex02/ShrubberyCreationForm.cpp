@@ -40,6 +40,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 
 				// 파일 닫기
 				outputFile.close();
+				std::cout << "The file was successfully created." << std::endl;
 			} else {
 				std::cerr << "파일을 열 수 없습니다." << std::endl;
 			}
