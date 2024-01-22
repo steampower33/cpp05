@@ -27,7 +27,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 		executor.signForm(*this);
 		std::string newFilename = _target + "_shrubbery";
 		// 파일 열기
-		std::ofstream outputFile(newFilename);
+		std::ofstream outputFile(newFilename.c_str());
 
 		if (outputFile.is_open()) {
 			// 아스키 트리 작성
