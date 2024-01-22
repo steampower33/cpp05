@@ -20,13 +20,12 @@ PresidentialPardonForm::~PresidentialPardonForm() {}
 void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
 	try
 	{
-		if (this->getSign())
-		{
-			executor.signForm(*this);
-			std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-		}
-		else
+		if (!this->getSign())
 			throw AForm::IsNotSignedException();
+		if (!(executor.getGrade() <= this->getGradeExecute()))
+			throw AForm::GradeTooLowException();
+		executor.signForm(*this);
+		std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	}
 	catch(const std::exception& e)
 	{

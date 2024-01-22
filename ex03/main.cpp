@@ -5,7 +5,7 @@
 #include "Intern.hpp"
 
 int main() {
-	Bureaucrat b("LEE", 10);
+	Bureaucrat b("LEE", 1);
 	AForm* ShrubberyCreationForm;
 	AForm* RobotomyRequestForm;
 	AForm* PresidentialPardonForm;
@@ -25,5 +25,6 @@ int main() {
 	delete PresidentialPardonForm;
 	delete RobotomyRequestForm;
 	delete ShrubberyCreationForm;
+
 	return 0;
 }
